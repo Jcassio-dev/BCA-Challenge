@@ -8,5 +8,6 @@ import { DatabaseModule } from 'src/infra/database/database.module';
   imports: [DatabaseModule],
   controllers: [TransactionsController],
   providers: [TransactionsService, TransactionRepository],
+  exports: [TransactionRepository],
 })
 export class TransactionsModule {}
