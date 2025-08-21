@@ -10,6 +10,5 @@ export class CreateTransactionDto {
     { strict: true },
     { message: 'Timestamp must be a valid ISO 8601 date' },
   )
-  @Type(() => Date)
-  timestamp: Date;
+  timestamp: string;
 }
