@@ -1,45 +1,45 @@
 import {
   Controller,
-  Get,
   Post,
   Body,
-  Patch,
-  Param,
   Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
 } from '@nestjs/common';
-import { TransactionsService } from './transactions.service';
-import { CreateTransactionDto } from './dto/create-transaction.dto';
-import { UpdateTransactionDto } from './dto/update-transaction.dto';
+import { TransactionsService } from '../use-cases/transactions.service';
+import { CreateTransactionDto } from '../dto/create-transaction.dto';
+import { TransactionResponseDto } from '../dto/transaction-response.dto';
 
 @Controller('transactions')
 export class TransactionsController {
   constructor(private readonly transactionsService: TransactionsService) {}
 
   @Post()
-  create(@Body() createTransactionDto: CreateTransactionDto) {
-    return this.transactionsService.create(createTransactionDto);
+  @HttpCode(HttpStatus.CREATED)
+  async create(
+    @Body() createTransactionDto: CreateTransactionDto,
+  ): Promise<TransactionResponseDto> {
+    const transaction = await this.transactionsService.create(
+      createTransactionDto.amount,
+      createTransactionDto.timestamp,
+    );
+
+    return TransactionResponseDto.fromEntity(transaction);
+  }
+
+  @Delete()
+  @HttpCode(HttpStatus.OK)
+  async deleteAll(): Promise<{ message: string }> {
+    await this.transactionsService.deleteAll();
+    return { message: 'All transactions deleted successfully' };
   }
 
   @Get()
-  findAll() {
-    return this.transactionsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.transactionsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateTransactionDto: UpdateTransactionDto,
-  ) {
-    return this.transactionsService.update(+id, updateTransactionDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.transactionsService.remove(+id);
+  @HttpCode(HttpStatus.OK)
+  async findAll(): Promise<TransactionResponseDto[]> {
+    console.log('chegou aq');
+    const transactions = await this.transactionsService.findAll();
+    return transactions.map(TransactionResponseDto.fromEntity);
   }
 }
