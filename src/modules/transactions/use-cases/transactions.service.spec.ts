@@ -34,10 +34,6 @@ describe('TransactionsService', () => {
     it('should create and save a transaction', async () => {
       const amount = 100;
       const timestamp = '2024-01-15T10:00:00.000Z';
-      const expectedTransaction = Transaction.create(
-        amount,
-        new Date(timestamp),
-      );
 
       repository.save.mockResolvedValue(undefined);
 
