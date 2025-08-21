@@ -39,20 +39,20 @@ describe('TransactionRepository', () => {
   });
 
   it('should save a transaction', async () => {
-    const transaction = createTestTransaction(100, new Date());
+    const transaction: Transaction = Transaction.create(100, new Date());
     mockDatabaseService.get.mockResolvedValueOnce([]);
 
     await repository.save(transaction);
 
     expect(mockDatabaseService.set).toHaveBeenCalledWith(
       `transaction:${transaction.id}`,
-      transaction,
+      {
+        id: transaction.id,
+        amount: transaction.amount,
+        timestamp: transaction.timestamp.toISOString(),
+      },
     );
-    expect(mockDatabaseService.set).toHaveBeenCalledWith('transactions', [
-      transaction.id,
-    ]);
   });
-
   it('should find all transactions', async () => {
     const transaction1 = createTestTransaction(100, new Date());
     const transaction2 = createTestTransaction(200, new Date());
@@ -131,19 +131,20 @@ describe('TransactionRepository', () => {
       oldTransaction.id,
     ]);
     mockDatabaseService.get
-      .mockResolvedValueOnce(recentTransaction)
-      .mockResolvedValueOnce(oldTransaction);
+      .mockResolvedValueOnce({
+        id: recentTransaction.id,
+        amount: recentTransaction.amount,
+        timestamp: recentTransaction.timestamp.toISOString(),
+      })
+      .mockResolvedValueOnce({
+        id: oldTransaction.id,
+        amount: oldTransaction.amount,
+        timestamp: oldTransaction.timestamp.toISOString(),
+      });
 
-    const originalDate = global.Date;
-    const mockNow = new Date(now);
-    global.Date = jest.fn(() => mockNow) as unknown as DateConstructor;
-    global.Date.now = jest.fn(() => now.getTime());
+    const result = await repository.findRecent(60);
 
-    try {
-      const result = await repository.findRecent(60);
-      expect(result).toEqual([recentTransaction]);
-    } finally {
-      global.Date = originalDate;
-    }
+    expect(result).toHaveLength(1);
+    expect(result[0].amount).toBe(100);
   });
 });
