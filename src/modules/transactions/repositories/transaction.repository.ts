@@ -40,7 +40,7 @@ export class TransactionRepository implements ITransactionRepository {
     return transactions;
   }
 
-  async findById(id: string): Promise<Transaction> {
+  async findById(id: string): Promise<Transaction | null> {
     const transaction = await this.databaseService.get<Transaction>(
       `transaction:${id}`,
     );
