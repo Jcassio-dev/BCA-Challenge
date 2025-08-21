@@ -7,13 +7,13 @@ export class Transaction {
   private readonly _timestamp: Date;
   private readonly _id: string;
 
-  constructor(amount: number, timestamp: Date) {
+  constructor(amount: number, timestamp: Date, id?: string) {
     this.validateAmount(amount);
     this.validateTimestamp(timestamp);
 
     this._amount = amount;
     this._timestamp = timestamp;
-    this._id = generateUUID();
+    this._id = id ?? generateUUID();
   }
 
   get amount(): number {
@@ -80,5 +80,13 @@ export class Transaction {
 
   static create(amount: number, timestamp: Date): Transaction {
     return new Transaction(amount, timestamp);
+  }
+
+  toJSON() {
+    return {
+      id: this._id,
+      amount: this._amount,
+      timestamp: this._timestamp.toISOString(),
+    };
   }
 }
