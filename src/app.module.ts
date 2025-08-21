@@ -6,6 +6,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { DomainValidationFilter } from './infra/exceptions/filters/domain-validation.filter';
 import { DatabaseModule } from './infra/database/database.module';
 import { LoggerModule } from './infra/logger/logger.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { LoggerModule } from './infra/logger/logger.module';
     TransactionsModule,
     DatabaseModule,
     LoggerModule,
+    StatisticsModule,
   ],
   controllers: [],
   providers: [
