@@ -13,7 +13,7 @@ export class TransactionRepository implements ITransactionRepository {
   async save(transaction: Transaction): Promise<void> {
     await this.databaseService.set(
       `transaction:${transaction.id}`,
-      transaction,
+      transaction.toJSON(),
     );
 
     const allIds = await this.getAllIds();
@@ -29,10 +29,16 @@ export class TransactionRepository implements ITransactionRepository {
     const transactions: Transaction[] = [];
 
     for (const id of allIds) {
-      const transaction = await this.databaseService.get<Transaction>(
+      const storedTransaction = await this.databaseService.get<Transaction>(
         `transaction:${id}`,
       );
-      if (transaction) {
+
+      if (storedTransaction) {
+        const transaction = new Transaction(
+          storedTransaction.amount,
+          new Date(storedTransaction.timestamp),
+          storedTransaction.id,
+        );
         transactions.push(transaction);
       }
     }
