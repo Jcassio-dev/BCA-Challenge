@@ -8,7 +8,10 @@ export class TransactionResponseDto {
   @ApiProperty({ example: 100.5 })
   amount: number;
 
-  @ApiProperty({ example: '2024-01-15T10:00:00.000Z' })
+  @ApiProperty({
+    example: '2025-08-20T10:00:00.000Z',
+    description: 'Data e hora da transação no formato ISO 8601 (UTC)',
+  })
   timestamp: string;
 
   static fromEntity(transaction: Transaction): TransactionResponseDto {
