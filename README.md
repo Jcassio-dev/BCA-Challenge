@@ -1,5 +1,6 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+-<p align="center">
+<a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
@@ -21,9 +22,58 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Sobre
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Esta API foi desenvolvida para solucionar um desafio proposto no desafio para posição de desenvolvedor Node pleno na Brasil Card.
+
+[Confira o documento do desafio clicando aqui](https://drive.google.com/file/d/1scBgrBC8JnJmLqWwTcaWviWdHQnXy9eV/view?usp=sharing)
+
+## Descrição da API
+
+é uma aplicação RESTful desenvolvida com **NestJS** e **TypeScript**, seguindo os princípios da **Clean Architecture**. O objetivo é gerenciar transações financeiras e fornecer estatísticas em tempo real, com foco em qualidade de código, boas práticas e segurança.
+
+## Estrutura do Projeto
+
+O projeto está organizado da seguinte maneira:
+
+```
+transactions-api/
+├── src/
+│   ├── common/          # Contém utilitários e pipes globais
+│   │   ├── pipes/       # Pipes para validação e transformação de dados
+│   │   └── utils/       # Funções utilitárias
+│   ├── infra/           # Infraestrutura e configurações globais
+│   │   ├── config/      # Configurações da aplicação
+│   │   ├── database/    # Serviços relacionados ao banco de dados em memória
+│   │   ├── exceptions/  # Tratamento de exceções globais
+│   │   └── logger/      # Serviço de logs estruturados
+│   ├── modules/         # Módulos principais da aplicação
+│   │   ├── health/      # Módulo de health check
+│   │   │   └── http/    # Entry point para o health check
+│   │   ├── transactions/ # Módulo de transações financeiras
+│   │   │   ├── dto/     # Objetos de transferência de dados (Data Transfer Objects)
+│   │   │   ├── entities/ # Entidades de domínio
+│   │   │   ├── exceptions/ # Exceções específicas do módulo
+│   │   │   ├── http/    # Entry point para transações
+│   │   │   ├── interfaces/ # Contratos e abstrações
+│   │   │   ├── repositories/ # Repositórios para manipulação de dados em memória
+│   │   │   └── use-cases/ # Casos de uso e lógica de negócios
+│   │   └── statistics/   # Módulo de estatísticas
+│   │       ├── dto/      # Objetos de transferência de dados
+│   │       ├── http/     # Entry point para estatísticas
+│   │       └── use-cases/ # Casos de uso e lógica de negócios
+│   └── app.module.ts     # Módulo raiz da aplicação
+├── .github/              # Configurações de workflows do GitHub Actions
+│   └── workflows/        # Arquivos de CI/CD
+├── test/                 # Testes de integração (end-to-end)
+├── .env                  # Variáveis de ambiente
+├── .gitignore            # Arquivos e pastas ignorados pelo Git
+├── Dockerfile            # Configuração para containerização
+├── docker-compose.yml    # Configuração para orquestração de containers
+├── package.json          # Dependências e scripts do projeto
+├── tsconfig.json         # Configuração do TypeScript
+└── README.md             # Documentação do projeto
+```
 
 ## Project setup
 

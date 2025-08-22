@@ -6,7 +6,7 @@ import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { DomainValidationFilter } from './infra/exceptions/filters/domain-validation.filter';
 import { DatabaseModule } from './infra/database/database.module';
 import { LoggerModule } from './infra/logger/logger.module';
-import { StatisticsModule } from './statistics/statistics.module';
+import { StatisticsModule } from './modules/statistics/statistics.module';
 import { HealthModule } from './modules/health/health.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 
