@@ -107,7 +107,7 @@ $ docker compose up --build
 
 A documentação da API está disponível no Swagger, que pode ser acessado em:
 
-[Produção](https://bca-challenge-119502210538.southamerica-east1.run.app/api)
+[Produção](https://bca-challenge-119502210538.southamerica-east1.run.app/api) <br/>
 [Local](http://localhost:3000/api)
 
 ## Sobre os testes
@@ -132,6 +132,13 @@ $ pnpm run test:e2e
 # test coverage
 $ pnpm run test:cov
 ```
+
+## Como contribuir
+
+1. Faça um fork do projeto
+2. Use conventional commit para subir suas alterações
+3. Abra um pull request
+4. Para o PR ser aprovado precisará de no mínimo 1 approve e também que os testes tenham rodado com êxito, caso contrário não será aceito.
 
 ## Deployment
 
