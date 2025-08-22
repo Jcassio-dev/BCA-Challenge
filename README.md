@@ -26,6 +26,8 @@
 
 Esta API foi desenvolvida para solucionar um desafio proposto no desafio para posição de desenvolvedor Node pleno na Brasil Card.
 
+[Vídeo DEMO - usando o projeto](https://drive.google.com/file/d/1vZ5J6bJs5NOgvT96roCfiumCnRFXgev8/view?usp=sharing)
+
 [Confira o documento do desafio clicando aqui](https://drive.google.com/file/d/1scBgrBC8JnJmLqWwTcaWviWdHQnXy9eV/view?usp=sharing)
 
 [Confira o swagger desta API clicando aqui](https://bca-challenge-119502210538.southamerica-east1.run.app/api)
