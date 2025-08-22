@@ -46,7 +46,7 @@ transactions-api/
 │   │   └── utils/       # Funções utilitárias
 │   ├── infra/           # Infraestrutura e configurações globais
 │   │   ├── config/      # Configurações da aplicação
-│   │   ├── database/    # Serviços relacionados ao banco de dados em memória
+│   │   ├── database/    # Serviços relacionados ao banco de dados em memória utilizando o KeyV
 │   │   ├── exceptions/  # Tratamento de exceções globais
 │   │   └── logger/      # Serviço de logs estruturados
 │   ├── modules/         # Módulos principais da aplicação
