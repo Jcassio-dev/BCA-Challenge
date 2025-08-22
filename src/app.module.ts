@@ -7,6 +7,7 @@ import { DomainValidationFilter } from './infra/exceptions/filters/domain-valida
 import { DatabaseModule } from './infra/database/database.module';
 import { LoggerModule } from './infra/logger/logger.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import { HealthModule } from './modules/health/health.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { StatisticsModule } from './statistics/statistics.module';
     DatabaseModule,
     LoggerModule,
     StatisticsModule,
+    HealthModule,
   ],
   controllers: [],
   providers: [
