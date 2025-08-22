@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { appConfig } from './infra/config/env.config';
 import { TransactionsModule } from './modules/transactions/transactions.module';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
