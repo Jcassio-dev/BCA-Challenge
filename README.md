@@ -28,6 +28,8 @@ Esta API foi desenvolvida para solucionar um desafio proposto no desafio para po
 
 [Confira o documento do desafio clicando aqui](https://drive.google.com/file/d/1scBgrBC8JnJmLqWwTcaWviWdHQnXy9eV/view?usp=sharing)
 
+[Confira o swagger desta API clicando aqui](https://bca-challenge-119502210538.southamerica-east1.run.app/api)
+
 ## Descrição da API
 
 é uma aplicação RESTful desenvolvida com **NestJS** e **TypeScript**, seguindo os princípios da **Clean Architecture**. O objetivo é gerenciar transações financeiras e fornecer estatísticas em tempo real, com foco em qualidade de código, boas práticas e segurança.
@@ -75,17 +77,18 @@ transactions-api/
 └── README.md             # Documentação do projeto
 ```
 
-## Project setup
+## Como Rodar
+
+1. Clone o repositório
+2. Instale as dependências com
 
 ```bash
 $ pnpm install
 ```
 
-## Compile and run the project
+3.Rode o projeto com
 
 ```bash
-# development
-$ pnpm run start
 
 # watch mode
 $ pnpm run start:dev
@@ -94,7 +97,30 @@ $ pnpm run start:dev
 $ pnpm run start:prod
 ```
 
-## Run tests
+4. Você também pode optar por usar o Docker
+
+```bash
+$ docker compose up --build
+```
+
+## Documentação
+
+A documentação da API está disponível no Swagger, que pode ser acessado em:
+
+[Produção](https://bca-challenge-119502210538.southamerica-east1.run.app/api)
+[Local](http://localhost:3000/api)
+
+## Sobre os testes
+
+### Unitários
+
+Optei com que os testes unitários ficassem junto aos seus respectivos arquivos, mantendo assim uma melhor organização e facilidade de manutenção.
+
+### Integração
+
+Os testes de integração estão localizados na pasta `test` e utilizam o Supertest para simular requisições HTTP.
+
+Para rodar os testes use:
 
 ```bash
 # unit tests
@@ -109,40 +135,6 @@ $ pnpm run test:cov
 
 ## Deployment
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Para fazer deploy utilizei o serviço do Cloud Run do google cloud, pela facilidade de configuração e CD automático. E também por já configurar um DNS.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Você pode conferir o deploy deste projeto em: https://bca-challenge-119502210538.southamerica-east1.run.app.
