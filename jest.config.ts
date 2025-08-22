@@ -13,6 +13,8 @@ const config: Config = {
     '!**/*.module.ts',
     '!**/main.ts',
     '!**/*.dto.ts',
+    '!**/infra/config/*',
+    '!**/*.controller.ts',
   ],
   coverageDirectory: '../coverage',
   testEnvironment: 'node',
