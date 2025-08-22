@@ -7,7 +7,7 @@ export interface IAppConfig {
   dbTtl: number;
   dbNamespace: string;
   rateLimitMax: number;
-  rateLimitWindowMs: number;
+  rateLimitWindow: number;
 }
 
 export const appConfig = registerAs(
@@ -20,10 +20,7 @@ export const appConfig = registerAs(
     dbTtl: parseInt(process.env.DB_TTL ?? '60000', 10),
     dbNamespace: process.env.DB_NAMESPACE || 'transactions',
 
-    rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX ?? '100', 10),
-    rateLimitWindowMs: parseInt(
-      process.env.RATE_LIMIT_WINDOW_MS ?? '900000',
-      10,
-    ),
+    rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX ?? '10', 10),
+    rateLimitWindow: parseInt(process.env.RATE_LIMIT_WINDOW ?? '60', 10),
   }),
 );
